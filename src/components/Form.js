@@ -5,8 +5,9 @@ const Form = (props) => {
     // console.log(props)
     const {handler, fields} = props;
 
-    const headerStyle = {
+    const labelStyle = {
         textTransform: 'capitalize',
+        fontWeight: 'bold'
     }
 
     const containerStyle = {
@@ -26,15 +27,15 @@ const Form = (props) => {
                 if (field.name.includes("Date")) {
                     return (
                         <div style={divStyle} key={field.id}>
-                            <label style={headerStyle} htmlFor={field.name}>{field.name.slice(0,-4) + " " + field.name.slice(-4)}</label>
-                            <input type="date" id={field.name} onChange={handler} value={field.text}/>
+                            <label style={labelStyle} htmlFor={field.name}>{field.name.slice(0,-4) + " " + field.name.slice(-4)}</label>
+                            <input type="date" id={field.name} onChange={handler} value={field.text} placeholder={field.text}/>
                         </div>
 
                     );
                 } else {
                     return (
                         <div style={divStyle} key={field.id}>
-                            <label style={headerStyle} htmlFor={field.name}>{field.name}</label>
+                            <label style={labelStyle} htmlFor={field.name}>{field.name}</label>
                             <input type="text" id={field.name} onChange={handler} value={field.text}/>
                         </div>
                     )

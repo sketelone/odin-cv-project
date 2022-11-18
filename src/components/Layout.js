@@ -7,10 +7,22 @@ const Layout = (props) => {
 
     const headerStyle = {
         textTransform: 'capitalize',
+        margin: '0px'
     }
 
+    const containerStyle = {
+        display: 'grid',
+        padding: '20px',
+        gap: '20px'
+    }
+
+    // const divStyle = {
+    //     display: 'grid',
+    //     gap: '10px'
+    // }
+
     return(
-        <div>
+        <div style={containerStyle}>
             {fields.map((field) => {
                 if (field.name.includes("Date")) {
                     return (

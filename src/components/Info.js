@@ -54,7 +54,7 @@ class Info extends Component {
                     <form style={formStyle}>
                         <fieldset style={fieldStyle}>
                             <legend>Info</legend>
-                            <Form handler={this.handleChange} fields={this.state.info}/>
+                            <Form handler={this.handleChange} fields={this.state.info} errors={this.state.errors}/>
                         </fieldset>
                     </form>
                 </div>

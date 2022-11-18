@@ -34,7 +34,7 @@ class App extends Component {
       padding: '20px',
       display: 'grid',
       justifyItems: 'center',
-      gap: '20px'
+      gap: '20px',
     }
 
     const buttonStyle = {
