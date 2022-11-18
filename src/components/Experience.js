@@ -8,20 +8,12 @@ class Experience extends Component {
         super(props);
 
         this.state = {
-            name: {text: ""},
-            position: {text: ""},
-            tasks: {text: ""},
-            dateBegun: {text: ""},
-            dateEnd: {text: ""},
-        };
-
-        this.state = {
             info: [
-                {name: "name", text: "", id: uniqid()},
+                {name: "company", text: "", id: uniqid()},
                 {name: "position", text: "", id: uniqid()},
                 {name: "tasks", text: "", id: uniqid()},
-                {name: "dateBegun", text: "", id: uniqid()},
-                {name: "dateEnd", text: "", id: uniqid()},
+                {name: "startDate", text: "", id: uniqid()},
+                {name: "endDate", text: "", id: uniqid()},
             ]
         };
     }
@@ -44,6 +36,7 @@ class Experience extends Component {
     };
 
     render() {
+        const info = this.state.info;
 
     const formStyle = {
         display: 'grid',
@@ -63,6 +56,7 @@ class Experience extends Component {
             <div>
                 <form style={formStyle}>
                     <fieldset style={fieldStyle}>
+                        <legend>Experience</legend>
                         <Form handler={this.handleChange} fields={this.state.info}/>
                     </fieldset>
                 </form>
@@ -73,6 +67,7 @@ class Experience extends Component {
         return (
             <div style={formStyle}>
                 <fieldset style={fieldStyle}>
+                    <legend>Experience</legend>
                     <Layout fields={this.state.info} />
                 </fieldset>
             </div>

@@ -10,8 +10,8 @@ class Education extends Component {
         this.state = {
             info: [
                 {name: "school", text: "", id: uniqid()},
-                {name: "title", text: "", id: uniqid()},
-                {name: "date", text: "", id: uniqid()},
+                {name: "degree", text: "", id: uniqid()},
+                {name: "graduationDate", text: "", id: uniqid()},
             ]
         };
     }
@@ -53,6 +53,7 @@ class Education extends Component {
             <div>
                 <form style={formStyle}>
                     <fieldset style={fieldStyle}>
+                        <legend>Education</legend>
                         <Form handler={this.handleChange} fields={this.state.info}/>
                     </fieldset>
                 </form>
@@ -63,6 +64,7 @@ class Education extends Component {
         return (
             <div style={formStyle}>
                 <fieldset style={fieldStyle}>
+                    <legend>Education</legend>
                     <Layout fields={this.state.info} />
                 </fieldset>
             </div>
