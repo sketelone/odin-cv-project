@@ -1,42 +1,39 @@
 import React, {Component} from "react";
+import uniqid from "uniqid";
+import Layout from "./Layout";
+import Form from "./Form";
 
 class Info extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            name: {text: ""},
-            email: {text: ""},
-            phone: {text: ""},
-          };
+            info: [
+                {name: "name", text: "", id: uniqid()},
+                {name: "email", text: "", id: uniqid()},
+                {name: "phone", text: "", id: uniqid()},
+            ]
+        };
     }
 
     handleChange = (e) => {
-        // console.log(e)
-        if (e.target.id === "name") {
-            this.setState({
-                name: {
-                text: e.target.value,
-                }
-            });
-        } else if (e.target.id === "email") {
-            this.setState({
-                email: {
-                text: e.target.value,
-                }
-            });
-        } else if (e.target.id === "phone") {
-            this.setState({
-                phone: {
-                text: e.target.value,
-                }
-            });
-        }
-        // console.log(this.state)
-      };
+        const nextInfo = this.state.info.map(item => {
+            if (e.target.id === item.name) {
+                return {
+                    ...item,
+                    text: e.target.value,
+                };
+            } else {
+                return item;
+            };
+        });
+        // console.log(nextInfo)
+        this.setState({
+            info: nextInfo
+        });
+    };
 
     render() {
-        const {name, email, phone} = this.state;
 
         const formStyle = {
             display: 'grid',
@@ -47,8 +44,7 @@ class Info extends Component {
         const fieldStyle = {
             display: 'grid',
             width: '400px',
-            padding: '30px',
-            gap: '20px'
+            padding: '30px'
         }
 
         // console.log(this.props.edit)
@@ -57,13 +53,7 @@ class Info extends Component {
                 <div>
                     <form style={formStyle}>
                         <fieldset style={fieldStyle}>
-                            <legend>General Information</legend>
-                            <label htmlFor="name">Name</label>
-                            <input type="text" id="name" onChange={this.handleChange} value={name.text} placeholder={name.text}/>
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" onChange={this.handleChange} value={email.text} placeholder={email.text}/>
-                            <label htmlFor="phone">Phone Number</label>
-                            <input type="text" id="phone" onChange={this.handleChange} value={phone.text} placeholder={phone.text}/>
+                            <Form handler={this.handleChange} fields={this.state.info}/>
                         </fieldset>
                     </form>
                 </div>
@@ -73,13 +63,7 @@ class Info extends Component {
             return (
                 <div style={formStyle}>
                     <fieldset style={fieldStyle}>
-                        <legend>General Information</legend>
-                        <h4>Name</h4>
-                        <p>{name.text}</p>
-                        <h4>Email</h4>
-                        <p>{email.text}</p>
-                        <h4>Phone Number</h4>
-                        <p>{phone.text}</p>
+                        <Layout fields={this.state.info} />
                     </fieldset>
                 </div>
 
